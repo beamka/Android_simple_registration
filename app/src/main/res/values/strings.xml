@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Android-registration</string>
+    <string name="button_login">Login</string>
+    <string name="button_logout">Logout</string>
+    <string name="button_backlogin">Back to login</string>
+    <string name="button_registration">Registration</string>
+    <string name="text_email">Email</string>
+    <string name="text_pass">Password</string>
+    <string name="text_confpass">Confirm password</string>
+    <string name="text_title1">Sample of Iryna Tkachova for SoftGroup</string>
+    <string name="text_title2">Form of registration</string>
+    <string name="text_title3">You login as:</string>
+</resources>

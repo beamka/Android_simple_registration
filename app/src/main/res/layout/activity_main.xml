@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ua.ibt.android_registration.MainActivity">
+
+    <LinearLayout
+        android:layout_width="363dp"
+        android:layout_height="367dp"
+        android:orientation="vertical"
+        android:weightSum="1"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="16dp">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_weight="0.1"
+            android:text="@string/text_title1"
+            android:layout_gravity="center"
+            android:textAlignment="center" />
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:hint="@string/text_email"
+            android:inputType="textEmailAddress"
+            tools:layout_editor_absoluteX="119dp"
+            tools:layout_editor_absoluteY="363dp" />
+
+        <EditText
+            android:id="@+id/pass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+            android:ems="10"
+            android:hint="@string/text_pass"
+            android:inputType="textPassword"
+            tools:layout_editor_absoluteX="130dp"
+            tools:layout_editor_absoluteY="425dp" />
+
+        <Button
+            android:id="@+id/login"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="goLogin"
+            android:text="@string/button_login" />
+
+        <Button
+            android:id="@+id/registration"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="goRegistration"
+            android:text="@string/button_registration" />
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
