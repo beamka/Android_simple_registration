@@ -1,6 +1,8 @@
 package ua.ibt.android_registration;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -19,6 +21,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText conf_password;
 
     private Singleton singleton;
+    private daoSQLite dao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,7 @@ public class RegistrationActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.pass);
         conf_password = (EditText) findViewById(R.id.confpass);
         singleton = Singleton.getInstance();
+        dao = new daoSQLite(getApplicationContext());
     }
 
     public void setRegistration(View view) {
@@ -66,8 +70,9 @@ public class RegistrationActivity extends AppCompatActivity {
                 return false;
             }
         if (str_pass.equals(str_conf_password)) {
-            User newUser = new User(email.getText().toString(), singleton.digest(password.getText().toString()));
-            singleton.addUser(newUser);
+            User newUser = new User(str_email, singleton.digest(password.getText().toString()));
+            //------SQLite------
+            dao.saveUser(newUser);
             return true;
         } else {
             Toast.makeText(getApplicationContext(), "Passwords do not match!", Toast.LENGTH_LONG).show();

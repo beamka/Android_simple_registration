@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText password;
 
     private Singleton singleton;
+    private daoSQLite dao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.pass);
         singleton = Singleton.getInstance();
+        dao = new daoSQLite(getApplicationContext());
     }
 
     public void goRegistration(View view){
@@ -40,10 +42,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean login(){
-        List<User> users = singleton.getUsers();
         String str_email = email.getText().toString();
         BigInteger hash_pass = singleton.digest(password.getText().toString());
-        for (User user : users)
+        //------SQLite------
+        User user = dao.findUser(str_email);
             if (str_email.equals(user.getEmail())) {
                 if(hash_pass.compareTo(user.getPassword()) == 0){
                     singleton.setCurrentUser(user);
