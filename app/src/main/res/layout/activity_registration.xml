@@ -55,5 +55,6 @@
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/button_backlogin"/>
+            android:onClick="goLogin"
+            android:text="@string/button_backlogin" />
 </LinearLayout>
