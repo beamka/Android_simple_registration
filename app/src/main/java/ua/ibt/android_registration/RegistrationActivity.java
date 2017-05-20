@@ -38,22 +38,13 @@ public class RegistrationActivity extends AppCompatActivity {
         }
     }
 
-    public void goLogout(View view){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-
     private boolean addNewUser() {
         List<User> users = singleton.getUsers();
-        String str_email = email.getText().toString().trim();
-        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-        if (str_email.matches(emailPattern)) {
-            if (str_email.length() < 6) {
-                Toast.makeText(getApplicationContext(), "Email must be longer than 6 symbol", Toast.LENGTH_LONG).show();
-                return false;
-            }
-        } else
-            Toast.makeText(getApplicationContext(), "Invalid email address", Toast.LENGTH_LONG).show();
+        String str_email = email.getText().toString();
+        if (str_email.length() < 6) {
+            Toast.makeText(getApplicationContext(), "Email must be longer than 6 symbol", Toast.LENGTH_LONG).show();
+            return false;
+        }
         String str_pass = password.getText().toString();
         if (str_pass.length() < 4) {
             Toast.makeText(getApplicationContext(), "Password must be longer than 4 symbol", Toast.LENGTH_LONG).show();
