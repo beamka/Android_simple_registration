@@ -29,7 +29,7 @@ public class daoSQLite {
     public User findUser(String email){
         String selection = dbHelper.KEY_EMAIL + " = ?";
         String[] selectionArgs = new String[]{email};
-        SQLiteDatabase database = dbHelper.getReadableDatabase();
+        SQLiteDatabase database = dbHelper.getWritableDatabase();
         User user = null;
         Cursor cursor = database.query(dbHelper.TABLE_NAME, null, selection, selectionArgs, null, null, null);
         if(cursor != null){

@@ -1,15 +1,12 @@
 package ua.ibt.android_registration;
 
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.List;
 
 /**
  * Created by IRINA on 19.05.2017.
@@ -48,7 +45,6 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     private boolean addNewUser() {
-        List<User> users = singleton.getUsers();
         String str_email = email.getText().toString().trim();
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
         if (str_email.matches(emailPattern)) {
@@ -64,8 +60,8 @@ public class RegistrationActivity extends AppCompatActivity {
             return false;
         }
         String str_conf_password = conf_password.getText().toString();
-        for (User user : users)
-            if (str_email.equals(user.getEmail())) {
+        User user = dao.findUser(str_email);
+            if (user != null) {
                 Toast.makeText(getApplicationContext(), "This email was exist!", Toast.LENGTH_LONG).show();
                 return false;
             }
